@@ -141,7 +141,7 @@ Fraction operator+ (const Fraction& frac1 , const Fraction& frac2){
     && frac2.getDenominator() != std::numeric_limits<int>::max())
     || (frac1.getNumerator() <= std::numeric_limits<int>::min()+100)
     && (frac2.getNumerator() <= std::numeric_limits<int>::min()+100)){
-        throw std::overflow_error("too large number!");
+        throw std::overflow_error("out of bounds!");
     }
     int lcm = LCM(frac1._denominator , frac2._denominator);
     int common_denominator = (lcm > 0) ? lcm : 1;
@@ -170,7 +170,7 @@ Fraction operator- (const Fraction& frac1 , const Fraction& frac2){
     && frac2.getNumerator() <= std::numeric_limits<int>::min()+100) 
     || (frac1.getNumerator() >= std::numeric_limits<int>::max()-100
     && frac2.getNumerator() <= std::numeric_limits<int>::min()+100)){
-        throw std::overflow_error("too large number!");
+        throw std::overflow_error("out of bounds!");
     }
     int common_denominator = LCM(frac1._denominator , frac2._denominator);
     int sum_numerator = ((common_denominator/frac1._denominator)*frac1._numerator) - ((common_denominator/frac2._denominator)*frac2._numerator);
@@ -201,7 +201,7 @@ Fraction operator* (const Fraction& frac1 , const Fraction& frac2){
     && frac2.getDenominator() != std::numeric_limits<int>::max())
     || (frac2.getDenominator() == std::numeric_limits<int>::max()
     && frac2.getDenominator() != std::numeric_limits<int>::max())){
-        throw std::overflow_error("too large number!");
+        throw std::overflow_error("out of bounds!");
     }
     int new_numerator = frac1._numerator * frac2._numerator;
     int new_denominator = frac1._denominator * frac2._denominator;
@@ -231,7 +231,7 @@ Fraction operator/ (const Fraction& frac1 , const Fraction& frac2){
     && frac1.getDenominator() != std::numeric_limits<int>::max()) 
     || (frac1.getDenominator() == std::numeric_limits<int>::max()
     && frac1.getNumerator() < std::numeric_limits<int>::max()-100) ){
-        throw std::overflow_error("too large number!");
+        throw std::overflow_error("out of bounds!");
     }
     int new_numerator = frac1._numerator * frac2._denominator;
     int new_denominator = frac1._denominator * frac2._numerator;
